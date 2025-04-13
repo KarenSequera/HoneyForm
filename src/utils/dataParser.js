@@ -31,7 +31,7 @@ const parseTags = (tags) => {
  * @returns {Question[]} - A list containing the questions
  */
 export const parseQuestions = async (sector) => {
-  const csvFilePath = `/HoneyForm/public/questionnaires/${sector}.csv`;
+  const csvFilePath = `./questionnaires/${sector}.csv`;
   const response = await fetch(csvFilePath);
   const csvContent = await response.text();
 
@@ -94,7 +94,7 @@ export const parseQuestions = async (sector) => {
  * @returns {Honeypot[]} - A list of honeypots. 
  */
 export const parseHoneypots = async (sector) => {
-  const csvFilePath = `/HoneyForm/public/honeypots/${sector}.csv`;
+  const csvFilePath = `./honeypots/${sector}.csv`;
   const response = await fetch(csvFilePath);
   const csvContent = await response.text();
 
