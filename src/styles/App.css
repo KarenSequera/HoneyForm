@@ -15,7 +15,7 @@ html, body {
 
 /*Background image*/
 .intro-stage {
-    background-image: url('fotos/background.png'); 
+    background-image: url('/fotos/background.png'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;
@@ -115,7 +115,7 @@ html, body {
 
 /*Sector selection background image*/
 .sector-selection{
-    background-image: url('fotos/background.png'); 
+    background-image: url('/fotos/background.png'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;

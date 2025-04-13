@@ -15,7 +15,7 @@ html, body {
 
 /*Background image*/
 .finish-background{
-    background-image: url('fotos/background.png'); 
+    background-image: url('/fotos/background.png'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;
