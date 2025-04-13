@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap');
+
+/* General styles for the intro stage */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+}
+
+* {
+    user-select: none;
+}
+
+/*INTRO STAGE*/
+
+/*Background image*/
+.intro-stage {
+    background-image: url('fotos/background.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Montserrat';
+    overflow: auto;
+}
+
+/*White square that contains all the content*/
+.intro-content {
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    width: 75%;
+    max-width: 75%;
+    min-height: 75%; 
+    height: auto; 
+    padding: 2rem;
+
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start;
+
+    gap: 1rem; 
+}
+
+/*Image containing the logo*/
+.intro-logo {
+    width: 50%; 
+    height: auto;
+
+    margin-top: -2%;
+    margin-bottom: -2%;
+} 
+
+/*Intro paragraph*/
+.intro-content p {
+    max-width: 600px;
+
+    margin-top: 2%;
+    size: contain;
+    text-align: center;
+
+    font-size: 1.5rem; 
+    color: #555; 
+    line-height: 1.8;    
+}
+
+/*Intro paragraph last element*/
+.intro-content p:last-child {
+    size: contain;
+
+    padding-top: 5%; 
+
+    color: #2c5a77; 
+    font-weight: 700;
+}
+
+/* Start Self-Assessment Button Style */
+.intro-button {
+    background-color: #2c5a77;
+    border: none; 
+    border-radius: 10px;
+    size: contain;
+
+    padding: 1rem 2rem; 
+    font-size: 1.25rem; 
+    font-family: 'Montserrat'; 
+    font-weight: 700;
+    color: white; 
+     
+    cursor: pointer;
+
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+/* Start Self-Assessment Button Hover Style */
+.intro-button:hover {
+    background-color: #B2CEE3; 
+
+    size: contain;
+    
+    transform: scale(1.05); 
+}
+
+/*SECTOR SELECTION STAGE*/
+
+/*Sector selection background image*/
+.sector-selection{
+    background-image: url('fotos/background.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Montserrat';
+    overflow: auto;
+}
+
+/*Sector selection content*/
+.sector-selection-content {
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    width: 75%;
+    max-width: 75%;
+    min-height: 75%; 
+    height: auto; 
+    padding: 2rem;
+
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start;
+
+    gap: 1rem; 
+
+    position: relative;
+}
+
+/*Title*/
+.sector-selection-content h1 {
+    size: contain;
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    color: #204054; 
+}
+
+/*Explanation text*/
+.sector-selection-content p {
+    max-width: 600px;
+
+    size: contain;
+    text-align: center;
+    margin: 0 0 1rem 0;
+
+    font-size: 1.5rem; 
+    color: #555; 
+    line-height: 1.8; 
+}
+
+/*Sector button*/
+.button-sector {
+    background-color: #2c5a77;
+    border: none; 
+    border-radius: 10px;
+
+    size: contain;
+    padding: 1rem 2rem;
+    width: 100%; 
+    max-width: 300px; 
+    
+    text-align: center; 
+    font-size: 1.25rem; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700;
+    color: white; 
+
+    cursor: pointer; 
+
+    transition: background-color 0.3s ease, transform 0.2s ease;  
+}
+
+/*Sector button hover style*/
+.button-sector:hover {
+    size: contain;
+    background-color: #B2CEE3; 
+    transform: scale(1.05);
+}
+
+/*Back button*/
+.back-button {
+    background-color: #2c5a77;
+    border: none; 
+    border-radius: 10px; 
+
+    size: contain;
+    width: 100%;
+    max-width: 150px;
+    height: 100%;
+    max-height: 40px;
+
+    position: absolute;
+    bottom: 3%; 
+    left: 3%;
+    
+    font-size: 1.25rem; 
+    text-align: center; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700; 
+    color: white; 
+   
+    cursor: pointer; 
+
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+/*Back button style*/
+.back-button:hover {
+    size: contain;
+    background-color: #B2CEE3; 
+    transform: scale(1.05); 
+}

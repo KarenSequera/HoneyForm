@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap');
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+}
+
+/*Styles applied to all the elements*/
+* {
+    user-select: none;
+}
+
+/*Background image*/
+
+/*Background white square that contains all the elements in the questionnaire*/
+.recommendations-white-square {
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    width: 75%;
+    max-width: 75%;
+    min-height: 75%; 
+    height: auto; 
+    padding: 2rem;
+
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start;
+
+    gap: 1rem; 
+
+    position: relative; 
+}
+
+/*Recommendations title*/
+.recommendations-white-square h1 {
+    position: relative; 
+    text-align: center; 
+    align-self: center; 
+
+    margin: 0; 
+    margin-top: 10px; 
+    padding-top: 0; 
+
+    font-size: 2.5rem;
+    color: #204054; 
+}
+
+
+/*Container for the recommendation*/
+.recommendation-details {
+    border: 3px solid #ccc;
+    padding: 20px;
+
+    width: 65%;
+    height: 500px;
+    
+    text-align: left;
+    font-size: clamp(1rem, 2vw, 1.3rem); 
+    line-height: 1.8;
+    color: #555;
+
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    word-wrap: break-word; 
+    text-overflow: ellipsis;
+    box-sizing: border-box; 
+}
+
+/*Honeypot subtitle*/
+.recommendation-details h2{
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.8;
+    color: #2c5a77;
+}
+
+/*Bold letters in the recommendation*/
+.recommendation-details strong{
+    color: #2c5a77;
+    
+}
+
+
+/*BUTTONS*/
+/* Previous honeypot button */
+.recommendation-previous-button {
+    background-color: transparent;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent; 
+    border-bottom: 25px solid transparent; 
+    border-right: 35px solid #2c5a77; 
+    border-left: solid transparent;
+
+    position: absolute;
+    left: 10%; 
+    top: 50%; 
+    transform: translateY(-50%);
+
+    cursor: pointer;
+}
+
+/*Previous honeypot button hover*/
+.recommendation-previous-button:hover {
+    border-right-color: #B2CEE3;
+}
+
+/*Previous honeypot button disabled*/
+.recommendation-previous-button:disabled {
+    border-right-color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+/* Next honeypot button*/
+.recommendation-next-button {
+    background-color: transparent;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent; 
+    border-bottom: 25px solid transparent; 
+    border-left: 35px solid #2c5a77; 
+    border-right: solid transparent;
+
+    position: absolute;
+    right: 10%; 
+    top: 50%;
+    transform: translateY(-50%);
+
+    cursor: pointer;
+}
+
+/* Next honeypot button hover*/
+.recommendation-next-button:hover {
+    border-left-color: #B2CEE3; 
+}
+
+/* Next honeypot button disabled*/
+.recommendation-next-button:disabled {
+    border-left-color: #d3d3d3; 
+    cursor: not-allowed;
+}
+
+/*Finish button*/
+.finish-button {
+    background-color: #2c5a77;
+    border: none;
+    border-radius: 10px;
+
+    width: 100%;
+    max-width: 150px;
+    height: 100%;
+    max-height: 50px;
+
+    padding: 0.5rem 1.5rem;
+    font-size: 1.2rem;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    color: white;
+
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/*Finish button hover*/
+.finish-button:hover {
+    background-color: #B2CEE3;
+    transform: scale(1.05);
+}
