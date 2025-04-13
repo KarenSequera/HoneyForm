@@ -22,7 +22,7 @@ html, body {
     max-width: 75%;
     min-height: 75%; 
     height: auto; 
-    padding: 2rem;
+    padding: 32px;
 
     text-align: center; 
     display: flex; 
@@ -30,7 +30,7 @@ html, body {
     align-items: center; 
     justify-content: flex-start;
 
-    gap: 1rem; 
+    gap: 16px; 
 
     position: relative; 
 }
@@ -45,7 +45,7 @@ html, body {
     margin-top: 10px; 
     padding-top: 0; 
 
-    font-size: 2.5rem;
+    font-size: 40px;
     color: #204054; 
 }
 
@@ -59,7 +59,7 @@ html, body {
     height: 500px;
     
     text-align: left;
-    font-size: clamp(1rem, 2vw, 1.3rem); 
+    font-size: clamp(16px, 2vw, 20.8px); 
     line-height: 1.8;
     color: #555;
 
@@ -73,7 +73,7 @@ html, body {
 /*Honeypot subtitle*/
 .recommendation-details h2{
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 28.8px;
     line-height: 1.8;
     color: #2c5a77;
 }
@@ -155,8 +155,8 @@ html, body {
     height: 100%;
     max-height: 50px;
 
-    padding: 0.5rem 1.5rem;
-    font-size: 1.2rem;
+    padding: 8px 24px;
+    font-size: 19.2px;
     font-family: 'Montserrat';
     font-weight: 600;
     color: white;
