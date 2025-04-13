@@ -111,7 +111,7 @@ function App() {
       <div className="intro-stage">
           <div className="intro-content">
             <img 
-              src={`${process.env.PUBLIC_URL}/fotos/logo.png`} 
+               src="/HoneyForm/fotos/logo.png" 
               alt="HoneyForm Logo" 
               className="intro-logo" 
             />
@@ -175,7 +175,7 @@ function App() {
       <div className='finish-background'>
         <div className='finish-white-square'>
           <img 
-                src={`${process.env.PUBLIC_URL}/fotos/logo.png`}
+                 src="/HoneyForm/fotos/logo.png" 
                 alt="HoneyForm Logo" 
                 className="finish-logo" 
               />
