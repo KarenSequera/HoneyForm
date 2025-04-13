@@ -93,7 +93,7 @@ function App() {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "2rem",
+        gap: "32px",
         margin: "0 auto",
         alignItems:"center",
         justifyContent: "flex-start", // Center content vertically
