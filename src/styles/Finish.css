@@ -41,7 +41,7 @@ html, body {
     max-width: 75%;
     min-height: 75%; 
     height: auto; 
-    padding: 32px;
+    padding: 2rem;
 
     text-align: center; 
     display: flex; 
@@ -49,7 +49,7 @@ html, body {
     align-items: center; 
     justify-content: flex-start;
 
-    gap: 16px; 
+    gap: 1rem; 
 }
 
 .finish-logo {
@@ -66,7 +66,7 @@ html, body {
     margin-bottom: 3%;
     margin-top: 2%;
 
-    font-size: 56px;
+    font-size: 3.5rem;
     
     color: #204054; 
 }
@@ -78,7 +78,7 @@ html, body {
     size: contain;
     text-align: center;
 
-    font-size: 24px; 
+    font-size: 1.5rem; 
     color: #555; 
     line-height: 1.8;   
 }
@@ -88,8 +88,8 @@ html, body {
     flex-direction: row; 
     justify-content: center; 
     align-items: center; 
-    gap: 16px; 
-    margin-top: 32px;
+    gap: 1rem; 
+    margin-top: 2rem;
 }
 
 .finish-button {
@@ -97,14 +97,14 @@ html, body {
     border: none; 
     border-radius: 10px; 
 
-    padding: 12.8px 24px; 
+    padding: 0.8rem 1.5rem; 
     text-align: center; 
     display: flex; 
     justify-content: center; 
     align-items: center;
 
     color: white; 
-    font-size: 16px; 
+    font-size: 1rem; 
     font-family: 'Montserrat'; 
     font-weight: 600; 
 
