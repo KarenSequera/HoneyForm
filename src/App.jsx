@@ -60,14 +60,14 @@ function App() {
         setQuestions(parsedQuestions);
         setHoneypots(parsedHoneypots);
 
-        console.log('Parsed Questions:', parsedQuestions);
-        console.log('Parsed Honeypots:', parsedHoneypots);
+        //console.log('Parsed Questions:', parsedQuestions);
+        //console.log('Parsed Honeypots:', parsedHoneypots);
 
         // Move to the questionnaire stage
         setStage('questionnaire');
     }
     catch (error) {
-        console.error('Error fetching data:', error);
+        //console.error('Error fetching data:', error);
     }
     finally {
         setLoading(false);

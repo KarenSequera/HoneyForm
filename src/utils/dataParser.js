@@ -20,7 +20,7 @@ const parseTags = (tags) => {
       );
 
     } catch (error) {
-      console.error('Error parsing tags:', error);
+      //console.error('Error parsing tags:', error);
       return []; // If tags error, return an empty array
     }
 };
@@ -81,7 +81,7 @@ export const parseQuestions = async (sector) => {
           }
       },
       error: (error) => {
-          console.error("Error parsing CSV:", error);
+          //console.error("Error parsing CSV:", error);
       },
   });
 
@@ -126,7 +126,7 @@ export const parseHoneypots = async (sector) => {
           });
       },
       error: (error) => {
-          console.error("Error parsing CSV:", error);
+          //console.error("Error parsing CSV:", error);
       },
   });
 

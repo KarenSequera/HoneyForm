@@ -63,7 +63,7 @@ class Questionnaire extends Component {
         if (answer.tagsQuestion) {
             answer.tagsQuestion.forEach(tags => {
                 let indexes = this.getQuestionsMatchingTags(tags);
-                console.log(indexes)
+                //console.log(indexes)
                 indexes.forEach(index => {
                     this.#questions[index].activateQuestion();
                 });
@@ -79,7 +79,7 @@ class Questionnaire extends Component {
 
         // If there are not more questions
         if( nextQuestion >= this.#questions.length){
-            //console.log('Questionnaire completed');
+            ////console.log('Questionnaire completed');
             this.setState({showRecomendations : true})
         }
         else{
@@ -113,7 +113,7 @@ class Questionnaire extends Component {
             }
         });
         this.#topHoneypots = this.#topHoneypots.sort((a, b) => b.currentScore - a.currentScore);
-        console.log("Top Honeypots:", this.#topHoneypots);
+        //console.log("Top Honeypots:", this.#topHoneypots);
     };
 
     // ANSWER OPERATION FUNCTIONS ////////////////////////////////////////
@@ -146,14 +146,14 @@ class Questionnaire extends Component {
         //Iterate through the honeypots looking for those that match the tags
         this.#questions.forEach((question, index) => {
             let match = true;
-            console.log(tags)
+            //console.log(tags)
             let questionTags = question.tags.flat(); // If flat is not used, include does not work
-            console.log(questionTags)
+            //console.log(questionTags)
             tags.forEach(tag => {
                 if (!questionTags.includes(tag)) {
                     // If  a honeypot does not match the tag it is not pushed
                     match = false; 
-                    console.log("Enters in if, not match")
+                    ////console.log("Enters in if, not match")
                 }
             });
             if(match){ matchingIndexes.push(index)}
@@ -167,7 +167,7 @@ class Questionnaire extends Component {
     addPointsToHoneypots = (indexes, pointsToAdd) => {
         indexes.forEach(index => {
             this.#honeypots[index].addPoints(pointsToAdd);
-            //console.log(pointsToAdd, 'Points added to', this.#honeypots[index].tags)
+            ////console.log(pointsToAdd, 'Points added to', this.#honeypots[index].tags)
         });
     }
 
@@ -177,7 +177,7 @@ class Questionnaire extends Component {
     subtractPointsToHoneypots = (indexes, pointsToSubtract) => {
         indexes.forEach(index =>{
             this.#honeypots[index].subtractPoints(pointsToSubtract);
-            //console.log(pointsToSubtract, 'Points subtracted to', this.#honeypots[index].tags)
+            ////console.log(pointsToSubtract, 'Points subtracted to', this.#honeypots[index].tags)
         });
     }
 
@@ -216,7 +216,7 @@ class Questionnaire extends Component {
     
     handleKeyPress = (event) => {
         if (event.key.toLowerCase() === 'c') {
-            console.log('Skipping to recommendations stage for testing purposes.');
+            //console.log('Skipping to recommendations stage for testing purposes.');
             this.setState({ showRecomendations: true });
         }
     };
@@ -225,7 +225,7 @@ class Questionnaire extends Component {
     componentDidUpdate(prevProps, prevState) {
         // Check if the recommendations are now being displayed
         if (!prevState.showRecomendations && this.state.showRecomendations) {
-            console.log("All Honeypots:", this.#honeypots);
+            //console.log("All Honeypots:", this.#honeypots);
         }
     }
     // RENDER ////////////////////////////////////////
