@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { parseHoneypots, parseQuestions } from './utils/dataParser';
-import Questionnaire from './components/Questionnaire.jsx';
+import { parseHoneypots, parseQuestions } from './utils/dataParser.js';
+import Questionnaire from './components/questionnaire.jsx';
 import './styles/App.css';
 import './styles/Finish.css';
 
@@ -49,9 +49,7 @@ function App() {
       return setStage('transportSelection');
     }
 
-    //TODO: Erase this line once all sectors have been implemented
-    selectedSector = 'energy';
-    setSector(selectedSector); // Set the selected sector
+    setSector(selectedSector); 
 
     try {
         // Fetch data
@@ -93,7 +91,7 @@ function App() {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "32px",
+        gap: "2rem",
         margin: "0 auto",
         alignItems:"center",
         justifyContent: "flex-start", // Center content vertically
@@ -111,7 +109,7 @@ function App() {
       <div className="intro-stage">
           <div className="intro-content">
             <img 
-               src="/HoneyForm/fotos/logo.png" 
+              src="/HoneyForm/fotos/logo.png" 
               alt="HoneyForm Logo" 
               className="intro-logo" 
             />
@@ -137,7 +135,7 @@ function App() {
           <p>Please select the sector your organization belongs to: </p>
           <button className="button-sector" onClick={() => handleSectorSelected('healthcare')}>Healthcare</button>
           <button className="button-sector" onClick={() => handleSectorSelected('energy')}>Energy</button>
-          <button className="button-sector" onClick={() => handleSectorSelected('financial')}>Financial Services</button>
+          <button className="button-sector" onClick={() => handleSectorSelected('banking')}>Financial Services</button>
           <button className="button-sector" onClick={() => handleSectorSelected('transport')}>Transport</button>
           <button className="back-button " onClick={() => handleReset()}>Back</button>
         </div>
@@ -151,7 +149,7 @@ function App() {
         <div className="sector-selection-content">
           <h1>Transport Selection</h1>
           <p>Please select the transport subsector your organization belongs to:</p>
-          <button className="button-sector" onClick={() => handleSectorSelected('air')}>Air</button>
+          <button className="button-sector" onClick={() => handleSectorSelected('aviation')}>Aviation</button>
           <button className="button-sector" onClick={() => handleSectorSelected('road')}>Road</button>
           <button className="button-sector" onClick={() => handleSectorSelected('railway')}>Railway</button>
           <button className="button-sector" onClick={() => handleSectorSelected('maritime')}>Maritime</button>
@@ -175,7 +173,7 @@ function App() {
       <div className='finish-background'>
         <div className='finish-white-square'>
           <img 
-                 src="/HoneyForm/fotos/logo.png" 
+                src="/HoneyForm/fotos/logo.png" 
                 alt="HoneyForm Logo" 
                 className="finish-logo" 
               />

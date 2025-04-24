@@ -3,7 +3,9 @@ import '../styles/Questionnaire.css';
 import '../styles/Recommendations.css'
 
 class Questionnaire extends Component {
-
+    #questions
+    #honeypots
+    #topHoneypots
     //  * Questionnaire constructor
     //  * @param {Object} props
     //  * @param {Question[]} props.questions - List of questions for the questionnaire
@@ -22,8 +24,9 @@ class Questionnaire extends Component {
             questionCount: 0, // Tracks the question number
             recommendationIndex: 0 // Index variable for the recommendations screen
         };
-        this.questions = props.questions;
-        this.honeypots = props.honeypots;
+        this.#questions = props.questions;
+        this.#honeypots = props.honeypots;
+        this.#topHoneypots = [];
     }
 
     // QUESTIONNAIRE HANDLERS ////////////////////////////////////////
@@ -38,21 +41,21 @@ class Questionnaire extends Component {
     // Updates honeypot scores, activates additional questions, and navigates to the next question or recommendations (if last)
     handleAnswerSubmit = () => {
         const { currentQuestion, currentAnswer } = this.state;
-        let answer = this.questions[currentQuestion].answers[currentAnswer];
+        let answer = this.#questions[currentQuestion].answers[currentAnswer];
         
         // Add points to Honeypots
         if (answer.tagsAdd) {
             answer.tagsAdd.forEach(tags => {
                 let indexes = this.getHoneypotMatchingTags(tags);
-                this.addPointsToHoneypots(indexes, answer.pointsToAdd);
+                this.addPointsToHoneypots(indexes, answer.getPointsToAdd());
             });
         }
 
-        // Substract points to Honeypots
-        if (answer.tagsSubstract) {
-            answer.tagsSubstract.forEach(tags => {
+        // Subtract points to Honeypots
+        if (answer.tagsSubtract) {
+            answer.tagsSubtract.forEach(tags => {
                 let indexes = this.getHoneypotMatchingTags(tags);
-                this.substractPointsToHoneypots(indexes, answer.pointsToSubstract);
+                this.subtractPointsToHoneypots(indexes, answer.getPointsToSubtract());
             });
         }
         
@@ -62,7 +65,7 @@ class Questionnaire extends Component {
                 let indexes = this.getQuestionsMatchingTags(tags);
                 console.log(indexes)
                 indexes.forEach(index => {
-                    this.questions[index].activateQuestion();
+                    this.#questions[index].activateQuestion();
                 });
             });
         }
@@ -70,12 +73,12 @@ class Questionnaire extends Component {
        // Not all the questions are active, so we need to find the next active question
         let nextQuestion = this.state.currentQuestion + 1;
         this.setState((prevState) => ({ questionCount: prevState.questionCount + 1 }));
-        while( nextQuestion < this.questions.length && !this.questions[nextQuestion].active){
+        while( nextQuestion < this.#questions.length && !this.#questions[nextQuestion].isActive()){
             nextQuestion++;
         }
 
         // If there are not more questions
-        if( nextQuestion >= this.questions.length){
+        if( nextQuestion >= this.#questions.length){
             //console.log('Questionnaire completed');
             this.setState({showRecomendations : true})
         }
@@ -86,7 +89,31 @@ class Questionnaire extends Component {
             })
         }
         
+        //At the end of submit answer, top honeypots are recalculated (in sthis way the questionnaire can be finished at any moment with the cheat)
+        this.setTopHoneypots();
+    };
 
+    setTopHoneypots = () =>{
+        const sortedHoneypots = [...this.#honeypots].sort((a, b) => b.currentScore - a.currentScore);
+        this.#topHoneypots = [];
+        sortedHoneypots.forEach((honeypot) => {
+            if (this.#topHoneypots.length < 3) {
+                const isDifferent = this.#topHoneypots.every((selectedHoneypot) => {
+                    const currentHoneypotTags = honeypot.tags.flat();
+                    const selectedHoneypotTags = selectedHoneypot.tags.flat();
+                    let differentTags = [];
+                    differentTags.push(currentHoneypotTags.filter(tag => !selectedHoneypotTags.includes(tag)));
+                    differentTags.push(selectedHoneypotTags.filter(tag => !currentHoneypotTags.includes(tag)));
+                    differentTags = differentTags.flat();
+                    return differentTags.length > 3;
+                });
+                if (isDifferent) {
+                    this.#topHoneypots.push(honeypot);
+                }
+            }
+        });
+        this.#topHoneypots = this.#topHoneypots.sort((a, b) => b.currentScore - a.currentScore);
+        console.log("Top Honeypots:", this.#topHoneypots);
     };
 
     // ANSWER OPERATION FUNCTIONS ////////////////////////////////////////
@@ -97,7 +124,7 @@ class Questionnaire extends Component {
     getHoneypotMatchingTags = (tags) => {
         const matchingIndexes = []; // Variable to store the indexes
         //Iterate through the honeypots looking for those that match the tags
-        this.honeypots.forEach((honeypot, index) => {
+        this.#honeypots.forEach((honeypot, index) => {
             let match = true;
             let honeypotTags = honeypot.tags.flat(); // If flat is not used, include does not work
             tags.forEach(tag => {
@@ -117,7 +144,7 @@ class Questionnaire extends Component {
     getQuestionsMatchingTags = (tags) => {
         const matchingIndexes = []; // Variable to store the indexes
         //Iterate through the honeypots looking for those that match the tags
-        this.questions.forEach((question, index) => {
+        this.#questions.forEach((question, index) => {
             let match = true;
             console.log(tags)
             let questionTags = question.tags.flat(); // If flat is not used, include does not work
@@ -139,18 +166,18 @@ class Questionnaire extends Component {
     //  * @param {int} pointsToAdd - Points to add
     addPointsToHoneypots = (indexes, pointsToAdd) => {
         indexes.forEach(index => {
-            this.honeypots[index].addPoints(pointsToAdd);
-            //console.log(pointsToAdd, 'Points added to', this.honeypots[index].tags)
+            this.#honeypots[index].addPoints(pointsToAdd);
+            //console.log(pointsToAdd, 'Points added to', this.#honeypots[index].tags)
         });
     }
 
-    //  * Substracts points to the honeypots in the index positions specified
-    //  * @param {int[]} indexes - Positions of the honeypots to substract points
-    //  * @param {int} pointsToSubstract - Points to substract
-    substractPointsToHoneypots = (indexes, pointsToSubstract) => {
+    //  * Subtracts points to the honeypots in the index positions specified
+    //  * @param {int[]} indexes - Positions of the honeypots to subtract points
+    //  * @param {int} pointsToSubtract - Points to subtract
+    subtractPointsToHoneypots = (indexes, pointsToSubtract) => {
         indexes.forEach(index =>{
-            this.honeypots[index].substractPoints(pointsToSubstract);
-            //console.log(pointsToSubstract, 'Points substracted to', this.honeypots[index].tags)
+            this.#honeypots[index].subtractPoints(pointsToSubtract);
+            //console.log(pointsToSubtract, 'Points subtracted to', this.#honeypots[index].tags)
         });
     }
 
@@ -180,12 +207,10 @@ class Questionnaire extends Component {
     //FOR TESTING PURPOSE, C CHEAT TO SKIP QUESTIONNAIRE ////////////////////////////////////////
 
     componentDidMount() {
-        // Add a keydown event listener to skip to recommendations
         document.addEventListener('keydown', this.handleKeyPress);
     }
     
     componentWillUnmount() {
-        // Clean up the event listener when the component unmounts
         document.removeEventListener('keydown', this.handleKeyPress);
     }
     
@@ -196,20 +221,25 @@ class Questionnaire extends Component {
         }
     };
 
+    //Logging the honeypots
+    componentDidUpdate(prevProps, prevState) {
+        // Check if the recommendations are now being displayed
+        if (!prevState.showRecomendations && this.state.showRecomendations) {
+            console.log("All Honeypots:", this.#honeypots);
+        }
+    }
     // RENDER ////////////////////////////////////////
 
     render() {
-        //TODO: If the recommendations are too similar, check that at least, X tags different 
-        const topHoneypots = [...this.honeypots].sort((a, b) => b.currentScore - a.currentScore).slice(0, 3);
-        const currentRecommendation = topHoneypots[this.state.recommendationIndex];
+        const currentRecommendation = this.#topHoneypots[this.state.recommendationIndex];
         return (
             <div className='background'> 
                 {!this.state.showRecomendations ? (
                     <div className='white-square'>
                         <h1>Question {this.state.questionCount+1}:</h1>
-                        <p>{this.questions[this.state.currentQuestion].text}</p>
+                        <p>{this.#questions[this.state.currentQuestion].text}</p>
                         <ul className="answers-list">
-                            {this.questions[this.state.currentQuestion].answers.map((answer, index) => (
+                            {this.#questions[this.state.currentQuestion].answers.map((answer, index) => (
                                 <li
                                     key={index}
                                     className={this.state.currentAnswer === index ? 'selected' : ''}

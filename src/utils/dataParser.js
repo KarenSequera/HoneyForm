@@ -1,7 +1,7 @@
 import Papa from 'papaparse';
-import Honeypot from '../models/Honeypot.js';
-import Question from '../models/Question.js';
-import Answer from '../models/Answer.js';
+import Honeypot from '../models/honeypot.js';
+import Question from '../models/question.js';
+import Answer from '../models/answer.js';
 /**
  * This funtion parses the TAGS to lists of lists according the pattern used in the CSV: "[TAG1,TAG2],[TAG3,TAG4]"
  * @param {string} tags - string containing the TAGS data
@@ -31,7 +31,7 @@ const parseTags = (tags) => {
  * @returns {Question[]} - A list containing the questions
  */
 export const parseQuestions = async (sector) => {
-  const csvFilePath = `./questionnaires/${sector}.csv`;
+  const csvFilePath = `./questionnaires/${sector} - questions.csv`;
   const response = await fetch(csvFilePath);
   const csvContent = await response.text();
 
@@ -67,8 +67,8 @@ export const parseQuestions = async (sector) => {
                       text: row.Answer,
                       tagsAdd: row.AddPointsHoneypotTags ? parseTags(row.AddPointsHoneypotTags) : [],
                       pointsToAdd: row.PointsToAdd ? parseInt(row.PointsToAdd, 10) : 0,
-                      tagsSubstract: row.SubstractPointsHoneypotTags ? parseTags(row.SubstractPointsHoneypotTags) : [],
-                      pointsToSubstract: row.PointsToSubstract ? parseInt(row.PointsToSubstract, 10) : 0,
+                      tagsSubtract: row.SubtractPointsHoneypotTags ? parseTags(row.SubtractPointsHoneypotTags) : [],
+                      pointsToSubtract: row.PointsToSubtract ? parseInt(row.PointsToSubtract, 10) : 0,
                       tagsQuestion: row.EnableQuestionTags ? parseTags(row.EnableQuestionTags) : [],
                   });
                   currentQuestion.answers.push(answer);
@@ -94,7 +94,7 @@ export const parseQuestions = async (sector) => {
  * @returns {Honeypot[]} - A list of honeypots. 
  */
 export const parseHoneypots = async (sector) => {
-  const csvFilePath = `./honeypots/${sector}.csv`;
+  const csvFilePath = `./honeypots/${sector} - honeypots.csv`;
   const response = await fetch(csvFilePath);
   const csvContent = await response.text();
 
