@@ -248,8 +248,6 @@ class Questionnaire extends Component {
                             <p><strong>Location:</strong> {currentRecommendation.location}</p>
                             <p><strong>Description:</strong> {currentRecommendation.description}</p>
                             <p><strong>MITRE ATT&CK Tactics:</strong> {currentRecommendation.mitreTactic}</p>
-                            <p><strong>Final Points:</strong> {currentRecommendation.currentScore}</p>
-                        
                         </div>
                         <button
                                 onClick={this.handlePreviousRecommendation}
