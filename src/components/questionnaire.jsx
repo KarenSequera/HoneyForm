@@ -153,7 +153,7 @@ class Questionnaire extends Component {
                 if (!questionTags.includes(tag)) {
                     // If  a honeypot does not match the tag it is not pushed
                     match = false; 
-                    ////console.log("Enters in if, not match")
+                    //// console.log("Enters in if, not match")
                 }
             });
             if(match){ matchingIndexes.push(index)}
@@ -202,32 +202,7 @@ class Questionnaire extends Component {
         this.setState({isFinished: true});
         this.props.onComplete();
     }
-
-
-    //FOR TESTING PURPOSE, C CHEAT TO SKIP QUESTIONNAIRE ////////////////////////////////////////
-
-    componentDidMount() {
-        document.addEventListener('keydown', this.handleKeyPress);
-    }
     
-    componentWillUnmount() {
-        document.removeEventListener('keydown', this.handleKeyPress);
-    }
-    
-    handleKeyPress = (event) => {
-        if (event.key.toLowerCase() === 'c') {
-            //console.log('Skipping to recommendations stage for testing purposes.');
-            this.setState({ showRecomendations: true });
-        }
-    };
-
-    //Logging the honeypots
-    componentDidUpdate(prevProps, prevState) {
-        // Check if the recommendations are now being displayed
-        if (!prevState.showRecomendations && this.state.showRecomendations) {
-            //console.log("All Honeypots:", this.#honeypots);
-        }
-    }
     // RENDER ////////////////////////////////////////
 
     render() {
