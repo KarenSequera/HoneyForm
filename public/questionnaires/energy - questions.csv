@@ -83,9 +83,7 @@ Tags,QuestionActive,EnableQuestionTags,Questions,Answer,AddPointsHoneypotTags,Po
 ,,,,4. No one reviews security.,[HONEYTOKEN],20,"[HIGH_INTERACTION],[VULNERABILITY],[HONEYNET]",100
 ,TRUE,,Is your organization willing to allocate monetary resources into honeypot deployment?,1. Yes. ,"[HONEYNET],[HIGH_INTERACTION]",20,,
 ,,,,"2. No, we work under a limited budget. ","[LOW_INTERACTION],[HONEYTOKEN]",20,[HONEYNET],10
-,TRUE,,"Does your organization prefer to detect attackers when they first try access the network, while moving around inside, or when they attempt to achieve their final goal (e.g. exfiltrating, destroying critical data, disrupting operations, etc.)?
-
-",1. We want to prioritize detections of attackers triying to enter our network perimeter. ,[INITIAL_ACCESS],20,,
+,TRUE,,"When does your organization prefer to detect attackers: at initial access, during lateral movement, or at their final objective (e.g., data theft or disruption)?",1. We want to prioritize detections of attackers triying to enter our network perimeter. ,[INITIAL_ACCESS],20,,
 ,,,,2. We want to prioritize detections of attackers navigating through the network .,[LATERAL_MOVEMENT],20,,
 ,,,,3. We want to prioritize detections of attackers when they attempt to damage our organization. ,[IMPACT],20,,
 ,TRUE,,What is the most impactful security event your organization has suffered?,1. Ransomware.,[RANSOMWARE],20,,
