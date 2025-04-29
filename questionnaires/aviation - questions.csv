@@ -28,7 +28,7 @@ Tags,QuestionActive,EnableQuestionTags,Questions,Answer,AddPointsHoneypotTags,Po
 ,,,,"2. No, we do not operate an airport.",,,[AIRPORT],100
 [AIRPORT],FALSE,[AIRPORT_IOT],Does your airport integrate IoT and intelligent applications?,"1. Yes, we are a smart airport. All our operations are fully interconnected and powered by IoT.",,,,
 ,,[AIRPORT_IOT],,"2. Yes, we employ some of these capabilities to increase efficiency and customer experience, but we are still not considered a smart airport.",,,,
-,,,,"3. No, we prioritize aircraft operations rather than technology integration. ",,,,
+,,,,"3. No, we prioritize aircraft operations rather than technology integration. ",,,"[AIRPORT,IOT]",100
 [AIRPORT_IOT],FALSE,,How does your airport handle IoT?,1. They are publicly accessible through the internet.,"[AIRPORT,IOT]",10,,
 ,,,,"2. They are located in our internal network, segmented from other IT and with strict access controls.",,,,
 [AIRPORT],FALSE,[ICS],"Does your airport employ Industrial Control Systems (ICS) such as baggage handling systems, air traffic control, safety systems, or others?","1. Yes, we employ them. ",,,,

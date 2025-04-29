@@ -2,8 +2,8 @@ Tags,QuestionActive,EnableQuestionTags,Questions,Answer,AddPointsHoneypotTags,Po
 ,TRUE,,How many employees does the organization have?,1. Between 1 and 9 employees.,[LOW_INTERACTION],10,,
 ,,,,2. Between 50 and 249 employees.,"[CORPORATION,PII],[CORPORATION,INSIDER_THREAT]",10,,
 ,,,,3. More than 250 employees.,"[CORPORATION,PII],[CORPORATION,INSIDER_THREAT],[CORPORATION,PHISHING],[HONEYNET]",10,,
-,TRUE,[HCP],Is your organization directly involved in patient care?,1. Yes.,,,,
-,,[PHARM],,"2. No, we are a pharmaceutical /laboratory.",,,,
+,TRUE,[HCP],Is your organization directly involved in patient care?,1. Yes.,,,[PHARM],100
+,,[PHARM],,"2. No, we are a pharmaceutical /laboratory.",,,[HCP],100
 ,TRUE,,What infrastructure model does your organization follow?,1. Fully Cloud.,,,"[CORPORATION,ON_PREM]",100
 ,,,,2. On-Premise.,,,"[CORPORATION,CLOUD]",100
 ,,,,3. Hybrid.,,,"[CORPORATION,CLOUD]",100
