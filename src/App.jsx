@@ -181,7 +181,7 @@ function App() {
           <p> Your feedback means a lot! Please take a moment to answer a few short questions to help us improve.</p>
           <div className='finish-button-container'>
             <button 
-                onClick={() => window.open('https://forms.gle/cou5Qt99eEJffU4q8', '_blank')} 
+                onClick={() => window.open('https://forms.gle/Ec7Jx7sRTeKwFnrKA', '_blank')} 
                 className="finish-button"
               >
                 Give Feedback
