@@ -89,29 +89,37 @@ class Questionnaire extends Component {
             })
         }
         
-        //At the end of submit answer, top honeypots are recalculated (in sthis way the questionnaire can be finished at any moment with the cheat)
+        //At the end of submit answer, top honeypots are recalculated (in this way the questionnaire can be finished at any moment with the cheat)
         this.setTopHoneypots();
     };
 
     setTopHoneypots = () =>{
+        // Sort the honeypots in descending order, with the highest score honeypots coming first
         const sortedHoneypots = [...this.#honeypots].sort((a, b) => b.currentScore - a.currentScore);
         this.#topHoneypots = [];
+        // Not only it is necessary to get the honeypots with higher score, but at least 3 different tags
         sortedHoneypots.forEach((honeypot) => {
             if (this.#topHoneypots.length < 3) {
                 const isDifferent = this.#topHoneypots.every((selectedHoneypot) => {
+                    // For the selected honeypot check if it has 3 different tags with the honeypots already selected for the top
+                    // First, the tags for both honeypots being compared are obtained
                     const currentHoneypotTags = honeypot.tags.flat();
                     const selectedHoneypotTags = selectedHoneypot.tags.flat();
                     let differentTags = [];
+                    // Then the tags that are only present in one of the honeypots are obtained
                     differentTags.push(currentHoneypotTags.filter(tag => !selectedHoneypotTags.includes(tag)));
                     differentTags.push(selectedHoneypotTags.filter(tag => !currentHoneypotTags.includes(tag)));
                     differentTags = differentTags.flat();
+                    // Return true or false depending if there are enough different tags
                     return differentTags.length > 3;
                 });
+                // If there are enough different tags, the honeypot is added to the top
                 if (isDifferent) {
                     this.#topHoneypots.push(honeypot);
                 }
             }
         });
+        // Just in case, honeypots are sorted again. Not doing it may cause bugs, for an unkown reason
         this.#topHoneypots = this.#topHoneypots.sort((a, b) => b.currentScore - a.currentScore);
         //console.log("Top Honeypots:", this.#topHoneypots);
     };

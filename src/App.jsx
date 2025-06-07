@@ -10,7 +10,7 @@ import './styles/Finish.css';
 function App() {
 /**
    * State Variables:
-   * @property {string} stage - Tracks the current stage of the application. Possible values:
+   * @property {string} stage - Tracks the current stage of the application with the following possible values:
    *   - 'intro': The intro screen.
    *   - 'sectorSelection': Screen to select the sector.
    *   - 'transportSelection': Screen to select the transport subsector.
@@ -20,13 +20,13 @@ function App() {
    * @property {string} sector - Stores the selected sector or subsector. 
    *   - values: 'healthcare', 'energy', 'financial', 'transport', 'air', 'road', 'maritime', 'railway'.
    * @property {Question[]} questions - Stores the questionnaire questions.
-   * @property {Honeypot[]} honeypots - Stores the honeypots
+   * @property {Honeypot[]} honeypots - Stores the honeypot recommendations
    * @property {bool} loading - To rerender once the data is fetched.
    */
   const [stage, setStage] = useState('intro'); // The initial Stage is always 'intro'.
   const [sector, setSector] = useState(null);
-  const [questions, setQuestions] = useState([]); // Stores parsed questions.
-  const [honeypots, setHoneypots] = useState([]); // Stores parsed honeypots.
+  const [questions, setQuestions] = useState([]); 
+  const [honeypots, setHoneypots] = useState([]); 
   const [loading, setLoading] = useState(false); 
 
   /**
@@ -40,11 +40,12 @@ function App() {
 
   /**
    * Handles the selection of a sector or subsector.
-   * @param {string} selectedSector 
+   * @param {string} selectedSector - String containing the name of a sector or subsector
    */
   const handleSectorSelected = async (selectedSector) => {
     setLoading(true); 
     
+    // First, it is necessary to handle the subsectors
     if (selectedSector === 'transport') {
       return setStage('transportSelection');
     }
@@ -52,11 +53,11 @@ function App() {
     setSector(selectedSector); 
 
     try {
-        // Fetch data
+        // Fetch data from the CSV
         const parsedQuestions = await parseQuestions(selectedSector);
         const parsedHoneypots = await parseHoneypots(selectedSector);
 
-        // Set the state
+        // Set the state with the parsed data
         setQuestions(parsedQuestions);
         setHoneypots(parsedHoneypots);
 
@@ -74,10 +75,16 @@ function App() {
     }
   };
 
+  /**
+   * Handles the transition to the 'reset' screen
+   */
   const handleQuestionnaireComplete = () =>{
     setStage('reset');
   };
 
+  /**
+   * Handles the the reset of the questionnaire, which means it goes back to the intro stage and resets the state variables
+   */
   const handleReset = () =>{
     setStage('intro'); 
     setSector(null); 
@@ -86,6 +93,9 @@ function App() {
     setLoading(false); 
   };
 
+   /**
+   * Rendering code:
+   */
   return (
     <div
       style={{
@@ -101,7 +111,7 @@ function App() {
 
     {
       /**
-       *************STAGES MANAGEMENT ******************
+       *************STAGES MANAGEMENT******************
       */
     }
 
